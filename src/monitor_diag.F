@@ -1971,11 +1971,13 @@ c***********************************************************************
 #  endif /* not atmos_only */
 
 !! Define the za dimension
+#  ifndef ocean_only
       ncstat = nf_def_dim(monncid, 'za', nla, ladim)
       if ( ncstat.ne.NF_NOERR ) call handle_err (ncstat, subnam)
 !! Define the zam dimension (with length nla-1)
       ncstat = nf_def_dim(monncid, 'zam', nla-1, lamdim)
       if ( ncstat.ne.NF_NOERR ) call handle_err (ncstat, subnam)
+#  endif /* not ocean_only */
 
 !! Define a one-dimensional variable called 'time' which
 !! stores time data in years
@@ -2698,7 +2700,7 @@ c***********************************************************************
       ncstat = nf_put_att_text(monncid, ugminoc_id, 'long_name',
      &            28, 'Minimum u in ocean Q-G layer')
       if ( ncstat.ne.NF_NOERR ) call handle_err (ncstat, subnam)
-      edims(1) = ladim
+      edims(1) = lodim
       edims(2) = timedim
       ncstat = nf_def_var(monncid,'ugmaxoc',NF_FLOAT,2,edims,ugmaxoc_id)
       if ( ncstat.ne.NF_NOERR ) call handle_err (ncstat, subnam)
@@ -2718,7 +2720,7 @@ c***********************************************************************
       ncstat = nf_put_att_text(monncid, vgminoc_id, 'long_name',
      &            28, 'Minimum v in ocean Q-G layer')
       if ( ncstat.ne.NF_NOERR ) call handle_err (ncstat, subnam)
-      edims(1) = ladim
+      edims(1) = lodim
       edims(2) = timedim
       ncstat = nf_def_var(monncid,'vgmaxoc',NF_FLOAT,2,edims,vgmaxoc_id)
       if ( ncstat.ne.NF_NOERR ) call handle_err (ncstat, subnam)
