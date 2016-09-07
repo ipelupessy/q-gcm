@@ -101,12 +101,20 @@ c
       do j=1,nyto
         do i=1,nxto
 *         Predict new sst - equation (7.11)
+#ifndef enforce_adiabatic_mixed_layer
           diabat = 0.5d0*wekto(i,j)*( sstm(i,j) + toc(1) )
+#else
+          diabat = 0.0d0
+#endif
           sstnew = sstm(i,j) + tdto*( rhs(i,j) + hmoinv*
      &                               ( rrcpoc*fnetoc(i,j) + diabat ) )
 
 *         Find layer 1/2 entrainment at T points - equation (7.12)
+#ifndef enforce_adiabatic_mixed_layer
           xfoent = -(0.5d0*dtoinv)*wekto(i,j)*( sstm(i,j) - toc(1) )
+#else
+          xfoent = 0.0d0
+#endif
 
 *         Check for convection & if necessary correct
 *         layer 1/2 entrainment and sst - equation (7.13)
