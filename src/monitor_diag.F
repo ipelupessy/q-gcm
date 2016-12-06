@@ -279,7 +279,7 @@ c***********************************************************************
         etamat(k) = etaint*atnorm
         et2now = et2now*atnorm
         pkenat(k) = 0.0d0
-        ddtpeat(k) = rhoat*gpat(k)*et2dot
+        ddtpeat(k) = rhoat*gpat(k)*et2dot*atnorm
         et2mat(k) = et2now
 !$OMP   END SINGLE NOWAIT
 *       Compute integral of eta*entrainment "e"
