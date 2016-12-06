@@ -569,7 +569,7 @@ c***********************************************************************
 !$OMP   SINGLE
         etamoc(k) = etaint*ocnorm
         et2now = et2now*ocnorm
-        ddtpeoc(k) = rhooc*gpoc(k)*et2dot
+        ddtpeoc(k) = rhooc*gpoc(k)*et2dot*ocnorm
         et2moc(k) = et2now
 !$OMP   END SINGLE NOWAIT
 *       Compute integral of eta*entrainment "e"
