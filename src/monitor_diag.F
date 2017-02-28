@@ -37,11 +37,11 @@ c
 
       PRIVATE
 
-      PUBLIC  :: monnc_comp, monnc_init, monnc_out
+      PUBLIC  :: monnc_comp, monnc_init, monnc_out, genint
 #  ifndef cyclic_ocean
       PRIVATE :: del4bx
 #  endif
-      PRIVATE :: del4ch, genint
+      PRIVATE :: del4ch
 #  ifndef ocean_only
       PRIVATE :: courat
 #  endif
