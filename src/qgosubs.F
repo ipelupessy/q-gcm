@@ -166,7 +166,7 @@ c     OCEANIC q STEP
 !$OMP PARALLEL DO DEFAULT (NONE)
 !$OMP&         PRIVATE (i,j,k,qdot,qold)
 !$OMP&         SHARED  (dqdt,fohfac,wekpo,entoc,
-!$OMP&                  bdrfac,del2p,qo,qom,tdto)
+!$OMP&                  bdrfac,del2p,qo,qom,tdto,ra_alpha)
 !$OMP&         SCHEDULE (STATIC)
       do j=2,nypo-1
         do i=1,nxpo
@@ -184,7 +184,7 @@ c     OCEANIC q STEP
           do k=1,nlo
             qold = qo(i,j,k)
             qo(i,j,k) = qom(i,j,k) + tdto*qdot(k)
-            qom(i,j,k) = qold
+            qom(i,j,k)= qold+ra_alpha*(qo(i,j,k)-2*qold+qom(i,j,k))
           enddo
         enddo
       enddo
