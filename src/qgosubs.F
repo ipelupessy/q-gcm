@@ -166,7 +166,7 @@ c     OCEANIC q STEP
 !$OMP PARALLEL DO DEFAULT (NONE)
 !$OMP&         PRIVATE (i,j,k,qdot,qold)
 !$OMP&         SHARED  (dqdt,fohfac,wekpo,entoc,
-!$OMP&                  bdrfac,del2p,qo,qom,tdto,ra_alpha)
+!$OMP&                  bdrfac,del2p,qo,qom,tdto,oalpha)
 !$OMP&         SCHEDULE (STATIC)
       do j=2,nypo-1
         do i=1,nxpo
