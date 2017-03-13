@@ -199,8 +199,8 @@ c     PRESSURES FROM PV (OCEAN)
       do k=1,nlo
         ocsnew(k) = ocncsp(k) + tdto*rhss(k)
         ocnnew(k) = ocncnp(k) + tdto*rhsn(k)
-        ocncsp(k) = ocncs(k) + ra_alpha*(ocsnew(k)-2*ocncs(k)+ ocncsp(k))
-        ocncnp(k) = ocncn(k) + ra_alpha*(ocnnew(k)-2*ocncn(k)+ ocncnp(k))
+        ocncsp(k) = ocncs(k) + oalpha*(ocsnew(k)-2*ocncs(k)+ ocncsp(k))
+        ocncnp(k) = ocncn(k) + oalpha*(ocnnew(k)-2*ocncn(k)+ ocncnp(k))
         ocncs(k) = ocsnew(k)
         ocncn(k) = ocnnew(k)
       enddo

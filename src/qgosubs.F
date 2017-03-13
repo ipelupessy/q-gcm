@@ -184,7 +184,7 @@ c     OCEANIC q STEP
           do k=1,nlo
             qold = qo(i,j,k)
             qo(i,j,k) = qom(i,j,k) + tdto*qdot(k)
-            qom(i,j,k)= qold+ra_alpha*(qo(i,j,k)-2*qold+qom(i,j,k))
+            qom(i,j,k)= qold+oalpha*(qo(i,j,k)-2*qold+qom(i,j,k))
           enddo
         enddo
       enddo
