@@ -342,7 +342,7 @@ c     PRESSURES FROM PV (OCEAN)
       do k=1,nlo-1
         aitmp = dpioc(k)
         dpioc(k) = dpiocp(k) - tdto*gpoc(k)*aient(k)
-        dpiocp(k) = aitmp
+        dpiocp(k) = aitmp + oalpha*(dpioc(k)-2*aitmp+dpiocp(k))
         rhsum = 0.0d0
         do m=1,nlo
           rhsum = rhsum + cdiffo(m,k)*xinhom(m)
