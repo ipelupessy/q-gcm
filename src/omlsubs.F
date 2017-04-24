@@ -93,7 +93,7 @@ c
 !$OMP&         PRIVATE (i,j,xfsi)
 !$OMP&         SHARED  (wekto,sstm,toc,tdto,rhs,hmoinv,rrcpoc,fnetoc,
 !$OMP&                  dtoinv,entfac,xfo,cfrasm,centsm,sst,xfosum,
-!$OMP&                  entoc)
+!$OMP&                  entoc, oalpha)
 
 !$OMP DO SCHEDULE (STATIC)
 !$OMP&   PRIVATE (diabat,sstnew,xfoent,dtonew,coneno)
@@ -129,7 +129,7 @@ c
           cfrasm = cfrasm + ( 0.5d0 - sign( 0.5d0, -dtonew ) )
           centsm = centsm - coneno
 
-          sstm(i,j) = sst(i,j)
+          sstm(i,j) = sst(i,j) + oalpha*(sstnew-2*sst(i,j)+sstm(i,j))
           sst(i,j) = sstnew
         enddo
       enddo
